@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:orientation="vertical"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-</LinearLayout>
+    <data>
+        <variable
+            name="viewModel"
+            type="com.walmart.nasaapodapi.ui.main.ApodViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.apod.title}"
+            android:textSize="24sp"
+            android:layout_margin="16dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@id/titleTextView"
+            android:layout_margin="16dp"
+            android:scaleType="centerCrop"
+            android:src="@{viewModel.apod.url}"/>
+
+        <TextView
+            android:id="@+id/explanationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.apod.explanation}"
+            android:layout_below="@id/imageView"
+            android:layout_margin="16dp"/>
+
+    </RelativeLayout>
+</layout>
